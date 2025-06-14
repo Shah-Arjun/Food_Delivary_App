@@ -22,7 +22,7 @@ const mongoDB = async() => {
         console.log("📦 Fetched food_items:", data.length, "items");
 
         // 🖨️ Print all documents (pretty format)
-        console.log(JSON.stringify(data, null, 2));
+        // console.log(JSON.stringify(data, null, 2));
 
         // 🌍 Make data globally accessible (optional, useful for reusing without repeated DB queries)
         global.food_items = data;

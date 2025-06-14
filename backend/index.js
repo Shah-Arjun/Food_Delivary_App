@@ -4,9 +4,8 @@ const mongoDB = require("./db");
 const app = express();
 const port = 5000;
 
-(async() => {
-    await mongoDB(); // Ensures DB connects before server starts
-    app.listen(port, () => {
-        console.log(`Example app listening on port ${port}`);
-    });
-})();
+mongoDB(); // 👈 Make sure this is called
+
+app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`);
+});

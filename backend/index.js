@@ -1,19 +1,41 @@
-// Import the Express framework
 const express = require("express");
-
-// Import the MongoDB connection function from db.j
 const mongoDB = require("./db");
+const cors = require("cors");
 
-// Create an instance of the Express application
 const app = express();
-
-// Define the port on which the server will run
 const port = 5000;
 
-// Connect to MongoDB Atlas when the server starts
-mongoDB(); // 👈 Make sure this is called, This establishes the database connection
+// Connect to MongoDB
+mongoDB();
 
-// Start the Express server and listen on the defined port
+
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.header(
+        "Access-Control-Allow-Header",
+        "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    next();
+})
+
+
+// Middleware
+app.use(
+    cors({
+        origin: "http://localhost:3000", // Your frontend port
+        credentials: true,
+    })
+);
+app.use(express.json()); // Parse incoming JSON
+
+// API Routes
+app.use("/api", require("./Routes/CreateUser"));
+
+// Default route
+app.get("/", (req, res) => {
+    res.send("Hello World");
+});
+
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
+    console.log(`✅ Server is running on port ${port}`);
 });

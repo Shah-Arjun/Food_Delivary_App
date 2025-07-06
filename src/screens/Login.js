@@ -32,9 +32,9 @@ export default function Login() {
     
     //navigate to home page after successful login
     if (json.success) {
-      navigate("/");
       localStorage.setItem("authToken", json.authToken); // Save the JWT token to localStorage so it can be used for authentication in future requests
       console.log(localStorage.getItem("authToken"));
+      navigate("/");
     }
   };
 

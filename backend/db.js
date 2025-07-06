@@ -38,25 +38,36 @@ const mongoURI = "mongodb+srv://gofood:mern123@cluster0.cznfsrj.mongodb.net/gofo
 
 const mongoDB = async() => {
     try {
-        // Connect to MongoDB
+        // 🌐 Connect to MongoDB
         await mongoose.connect(mongoURI, {
             useNewUrlParser: true,
             useUnifiedTopology: true
         });
 
-        console.log("MongoDB connected");
+        console.log("✅ Connected to MongoDB Atlas");
 
-        // Fetch food_items collection
-        const fetched_data = await mongoose.connection.db.collection("food_items");
-        const data = await fetched_data.find({}).toArray();
+        // 📦 Get database reference
+        const db = mongoose.connection.db;
 
-        global.food_items = data;
-        console.log(global.food_items);
+        // 🍴 Fetch food_items
+        const foodItemsCollection = db.collection("food_items");
+        const food_items = await foodItemsCollection.find({}).toArray();
+
+        // 🗂️ Fetch foodCategory
+        const foodCategoryCollection = db.collection("foodCategory");
+        const foodCategory = await foodCategoryCollection.find({}).toArray();
+
+        // 🌍 Make globally accessible
+        global.food_items = food_items;
+        global.foodCategory = foodCategory;
+
+        console.log(`📦 Loaded ${food_items.length} food items and ${foodCategory.length} categories.`);
+        console.log(global.food_items, global.goodCategory)
+
     } catch (err) {
-        console.error("MongoDB connection error:", err);
+        console.error("❌ MongoDB connection error:", err);
+        process.exit(1);
     }
 };
 
-
-// ✅ Export the function so it can be imported and called from other files (like index.js)
 module.exports = mongoDB;

@@ -124,13 +124,12 @@ export default function Home() {
                                             item.CategoryName === data.CategoryName &&
                                             item.name?.toLowerCase().includes(search.toLowerCase())
                                     )
-                                    .map((filteredItem) => (
-                                        <div key={filteredItem._id} className="col-12 col-md-6 col-lg-3">
+                                    .map((filteredItems) => (
+                                        <div key={filteredItems._id} className="col-12 col-md-6 col-lg-3">
                                             <Card
-                                                foodName={filteredItem.name}
-                                                options={filteredItem.options[0]}
-                                                imgSrc={filteredItem.img}
-                                            />
+                                                foodItem={filteredItems}
+                                                options={filteredItems.options[0]}
+                                            ></Card>
                                         </div>
                                     ))
                             ) : (

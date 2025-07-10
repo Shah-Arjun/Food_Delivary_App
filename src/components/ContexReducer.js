@@ -4,10 +4,13 @@ const CartStateContext = createContext();
 const CartDispatchContext = createContext();
 
 const reducer = (state, action) => {
-    switch(action.type){
-        case "ADD":
-            return [...state,{id:action.id, name:action.name, qty:action.qty, size:action.size, price:action.price, img:action.img}]
-
+    switch (action.type) {
+        case "ADD":  //adda item to cart
+            return [...state, { id: action.id, name: action.name, qty: action.qty, size: action.size, price: action.price, img: action.img }]
+        case "REMOVE": //remove items from cart
+            let newArr = [...state]
+            newArr.splice(action.index, 1)
+            return newArr;
         default:
             console.log("Errot in Reducer");
     }

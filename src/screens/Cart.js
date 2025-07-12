@@ -1,9 +1,14 @@
 import React from 'react'
 import Delete from '@material-ui/icons/Delete'
 import { useCart, useDispatchCart } from '../components/ContextReducer';
+
+
+
 export default function Cart() {
     let data = useCart();
     let dispatch = useDispatchCart();
+    const [loading, setLoading] = React.useState(false);
+
     if (data.length === 0) {
         return (
             <div>
@@ -17,30 +22,39 @@ export default function Cart() {
     // }
 
 
-    
 
-    //to handle order data
+
+    //to handle order data (checkout functionality)
     const handleCheckOut = async () => {
         let userEmail = localStorage.getItem("userEmail");
-        // console.log(data,localStorage.getItem("userEmail"),new Date())
-        let response = await fetch("http://localhost:5000/api/auth/orderData", {
-            // credentials: 'include',
-            // Origin:"http://localhost:3000/login",
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                order_data: data,
-                email: userEmail,
-                order_date: new Date().toDateString()
-            })
-        });
-        console.log("JSON RESPONSE:::::", response.status)
-        if (response.status === 200) {
-            dispatch({ type: "DROP" })
+        setLoading(true); // 🟢 Start loading
+
+        try {
+            let response = await fetch("http://localhost:5000/api/auth/orderData", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    order_data: data,
+                    email: userEmail,
+                    order_date: new Date().toDateString()
+                })
+            });
+
+            if (response.status === 200) {
+                alert("Order placed successfully!");
+                dispatch({ type: "DROP" });
+            } else {
+                alert("Failed to place order. Please try again.");
+            }
+        } catch (error) {
+            console.error("Checkout error:", error);
+            alert("An error occurred during checkout. Please try again later.");
+        } finally {
+            setLoading(false); // 🔴 Stop loading in any case
         }
-    }
+    };
 
 
 
@@ -65,7 +79,7 @@ export default function Cart() {
                     </thead>
                     <tbody>
                         {data.map((food, index) => (
-                            <tr>
+                            <tr key={index}>
                                 <th scope='row' >{index + 1}</th>
                                 <td >{food.name}</td>
                                 <td>{food.qty}</td>
@@ -77,7 +91,7 @@ export default function Cart() {
                 </table>
                 <div><h1 className='fs-2'>Total Price: {totalPrice}/-</h1></div>
                 <div>
-                    <button className='btn bg-success mt-5 ' onClick={handleCheckOut} > Check Out </button>
+                    <button className='btn bg-success mt-5 ' onClick={handleCheckOut} disabled={data.length === 0} > Check Out </button>
                 </div>
             </div>
 

@@ -29,7 +29,9 @@ export default function Card(props) {
       }
       else if (food.size !== size) { //if food of new size-half,full then add to cart
         await dispacth({ type: "ADD", id: props.foodItem._id, name: props.foodItem.name, price: finalPrice, qty: qty, size: size })
+        return
       }
+      return
     }
     await dispacth({ type: "ADD", id: props.foodItem._id, name: props.foodItem.name, price: finalPrice, qty: qty, size: size })
   }

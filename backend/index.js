@@ -31,6 +31,7 @@ app.use(express.json()); // Parse incoming JSON
 // API Routes
 app.use("/api", require("./Routes/CreateUser"));
 app.use("/api", require("./Routes/DisplayData"));
+app.use("/api", require("./Routes/OrderData"));
 
 // Default route
 app.get("/", (req, res) => {

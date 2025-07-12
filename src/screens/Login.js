@@ -12,7 +12,7 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/loginuser", {
+    const response = await fetch("://localhhttpost:5000/api/loginuser", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -32,6 +32,7 @@ export default function Login() {
     
     //navigate to home page after successful login
     if (json.success) {
+      localStorage.setItem("userEmail", credentials.email); //send the user login email to local storage to be user in order data
       localStorage.setItem("authToken", json.authToken); // Save the JWT token to localStorage so it can be used for authentication in future requests
       console.log(localStorage.getItem("authToken"));
       navigate("/");

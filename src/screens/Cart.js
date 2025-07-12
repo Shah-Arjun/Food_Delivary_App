@@ -16,6 +16,10 @@ export default function Cart() {
     //   dispatch({type:"REMOVE",index:index})
     // }
 
+
+    
+
+    //to handle order data
     const handleCheckOut = async () => {
         let userEmail = localStorage.getItem("userEmail");
         // console.log(data,localStorage.getItem("userEmail"),new Date())
@@ -37,6 +41,10 @@ export default function Cart() {
             dispatch({ type: "DROP" })
         }
     }
+
+
+
+
 
     let totalPrice = data.reduce((total, food) => total + food.price, 0)
     return (

@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Modal from "../Modal";
 import Cart from '../screens/Cart';
 
-import { useCart } from "./ContexReducer";
+import { useCart } from "./ContextReducer";
 
 export default function Navbar() {
 
@@ -48,7 +48,7 @@ let data = useCart();
 
                             {(localStorage.getItem("authToken")) ?
                                 <li className="nav-item">
-                                    <Link className="nav-link active fs-5" aria-current="page" to="/"> My Orders </Link>
+                                    <Link className="nav-link active fs-5" aria-current="page" to="/myOrder"> My Orders </Link>
                                 </li>
                                 : ""
                             }

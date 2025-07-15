@@ -51,5 +51,18 @@ router.post('/orderData', async (req, res) => {  // Define a POST route '/orderD
 })
 
 
+
+//fetch ordered data from db and display it.
+router.post('/myorderData', async(req, res)=>{
+    try {
+        let myData = await Order.findOne({'email':req.body.email})
+        res.json({orderData:myData})
+    } catch (error) {
+        res.send("Server Error", error.message)
+
+    }
+})
+
+
 // Export this router so it can be used in your main server file
 module.exports = router;

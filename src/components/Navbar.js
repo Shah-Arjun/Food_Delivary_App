@@ -55,10 +55,10 @@ let data = useCart();
 
                         </ul>
 
-                        {(localStorage.getItem("authToken")) ?
+                        {(!localStorage.getItem("authToken")) ?
                             <div className="d-flex">
-                                <Link className="btn bg-white text-success mx-1" href="/login">Login</Link>
-                                <Link className="btn bg-white text-success mx-1" href="/creatuser">SignUp</Link>
+                                <Link className="btn bg-white text-success mx-1" to="/login">Login</Link>
+                                <Link className="btn bg-white text-success mx-1" to="/createuser">SignUp</Link>
                             </div>
                             :
                             <div>
@@ -69,7 +69,7 @@ let data = useCart();
 
 {cartView? <Modal onClose={()=>setCartView(false)}> <Cart/> </Modal> : null}
 
-                                <div className="btn bg-white text-denager mx-2" onClick={handleLogout}>
+                                <div className="btn bg-white text-danger mx-2" onClick={handleLogout}>
                                     Logout
                                 </div>
                             </div>

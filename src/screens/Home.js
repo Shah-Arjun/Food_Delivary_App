@@ -64,11 +64,12 @@ export default function Home() {
                             </div>
                         </div>
 
+                        {/*caroudel iamge */}
                         <div className="carousel-item active">
                             <img
                                 src="https://picsum.photos/seed/burger/900/700"
                                 className="d-block w-100"
-                                style={{ filter: "brightness(30%)" }}
+                                style={{ filter: "brightness(30%)", height: "500px", objectFit: "cover" }}
                                 alt="..."
                             />
                         </div>
@@ -138,7 +139,11 @@ export default function Home() {
                         </div>
                     ))
                 ) : (
-                    <div>Loading...</div>
+                    <div className="d-flex justify-content-center align-items-center my-5">
+                        <div className="spinner-border text-primary" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
                 )}
             </div>
 

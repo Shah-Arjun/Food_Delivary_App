@@ -1,17 +1,24 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-
-export default function Login() {
-  const [credentials, setcredentials] = useState({
+export default function Signup() {
+  const [credentials, setCredentials] = useState({
     name: "",
     email: "",
     password: "",
     geolocation: "",
   });
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!credentials.name || !credentials.email || !credentials.password || !credentials.geolocation) {
+      alert("All fields are required.");
+      return;
+    }
+
     const response = await fetch("http://localhost:5000/api/createuser", {
       method: "POST",
       headers: {
@@ -30,21 +37,23 @@ export default function Login() {
 
     if (!json.success) {
       alert("Enter Valid Credentials");
+    } else {
+      alert("Account created successfully!");
+      navigate("/login");
     }
   };
 
   const onChange = (event) => {
-    setcredentials({ ...credentials, [event.target.name]: event.target.value });
+    setCredentials({ ...credentials, [event.target.name]: event.target.value });
   };
 
   return (
-    <>
     <div className="container mt-4">
       <form onSubmit={handleSubmit}>
+        <h2 className="mb-4">Sign Up</h2>
+
         <div className="mb-3">
-          <label htmlFor="name" className="form-label">
-            Name
-          </label>
+          <label htmlFor="name" className="form-label">Name</label>
           <input
             type="text"
             className="form-control"
@@ -52,13 +61,12 @@ export default function Login() {
             name="name"
             value={credentials.name}
             onChange={onChange}
+            required
           />
         </div>
 
         <div className="mb-3">
-          <label htmlFor="email" className="form-label">
-            Email address
-          </label>
+          <label htmlFor="email" className="form-label">Email address</label>
           <input
             type="email"
             className="form-control"
@@ -66,13 +74,12 @@ export default function Login() {
             name="email"
             value={credentials.email}
             onChange={onChange}
+            required
           />
         </div>
 
         <div className="mb-3">
-          <label htmlFor="password" className="form-label">
-            Password
-          </label>
+          <label htmlFor="password" className="form-label">Password</label>
           <input
             type="password"
             className="form-control"
@@ -80,13 +87,12 @@ export default function Login() {
             name="password"
             value={credentials.password}
             onChange={onChange}
+            required
           />
         </div>
 
         <div className="mb-3">
-          <label htmlFor="address" className="form-label">
-            Address
-          </label>
+          <label htmlFor="address" className="form-label">Address</label>
           <input
             type="text"
             className="form-control"
@@ -94,6 +100,7 @@ export default function Login() {
             name="geolocation"
             value={credentials.geolocation}
             onChange={onChange}
+            required
           />
         </div>
 
@@ -104,7 +111,6 @@ export default function Login() {
           Already a user
         </Link>
       </form>
-      </div>
-    </>
+    </div>
   );
 }

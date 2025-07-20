@@ -49,7 +49,7 @@ export default function Cart() {
                 alert("Failed to place order. Please try again.");
             }
         } catch (error) {
-            console.error("Checkout error:", error);
+            console.error("Checkout error:", error.message || error);
             alert("An error occurred during checkout. Please try again later.");
         } finally {
             setLoading(false); // 🔴 Stop loading in any case
@@ -79,19 +79,34 @@ export default function Cart() {
                     </thead>
                     <tbody>
                         {data.map((food, index) => (
-                            <tr key={index}>
+                            <tr key={food._id || index}>
                                 <th scope='row' >{index + 1}</th>
                                 <td >{food.name}</td>
                                 <td>{food.qty}</td>
                                 <td>{food.size}</td>
                                 <td>{food.price}</td>
-                                <td ><button type="button" className="btn p-0"><Delete onClick={() => { dispatch({ type: "REMOVE", index: index }) }} /></button> </td></tr>
+                                <td >
+                                    <button type="button" className="btn p-0">
+                                        <Delete onClick={() => {
+                                            if (window.confirm("Are you sure you want to remove this item?")) {
+                                                dispatch({ type: "REMOVE", index })
+                                            }
+                                        }} />
+                                    </button> </td>
+                            </tr>
                         ))}
                     </tbody>
                 </table>
-                <div><h1 className='fs-2'>Total Price: {totalPrice}/-</h1></div>
+                <div><h1 className='fs-2'>Total Price: {totalPrice.toLocaleString()}/-</h1></div>
                 <div>
-                    <button className='btn bg-success mt-5 ' onClick={handleCheckOut} disabled={data.length === 0} > {loading ? "Placing Order..." : "Check Out"} </button>
+                    <button className='btn bg-success mt-5 ' onClick={handleCheckOut} disabled={data.length === 0} > {loading ? (
+                        <button className='btn bg-success mt-5 disabled'>
+                            <span className='spinner-border spinner-border-sm me-2'></span>
+                            Placing Order...
+                        </button>
+                    ) : (
+                        <button className='btn bg-success mt-5' onClick={handleCheckOut}>Check Out</button>
+                    )} </button>
                 </div>
             </div>
 

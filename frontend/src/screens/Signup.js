@@ -1,5 +1,9 @@
+// src/screens/Signup.js
+
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 export default function Signup() {
   const [credentials, setCredentials] = useState({
@@ -48,69 +52,81 @@ export default function Signup() {
   };
 
   return (
-    <div className="container mt-4">
-      <form onSubmit={handleSubmit}>
-        <h2 className="mb-4">Sign Up</h2>
-
-        <div className="mb-3">
-          <label htmlFor="name" className="form-label">Name</label>
-          <input
-            type="text"
-            className="form-control"
-            id="name"
-            name="name"
-            value={credentials.name}
-            onChange={onChange}
-            required
-          />
+    <div className="container d-flex align-items-center justify-content-center" style={{ minHeight: "100vh", backgroundColor: "#fff8f0" }}>
+      <div className="card shadow p-4 w-100" style={{ maxWidth: "480px", borderRadius: "1rem" }}>
+        <div className="text-center mb-4">
+          <i className="bi bi-person-plus-fill fs-1 text-primary"></i>
+          <h3 className="fw-bold mt-2 text-dark">Create an Account</h3>
+          <p className="text-muted small">Join FoodieHub and start ordering your favorite meals.</p>
         </div>
 
-        <div className="mb-3">
-          <label htmlFor="email" className="form-label">Email address</label>
-          <input
-            type="email"
-            className="form-control"
-            id="email"
-            name="email"
-            value={credentials.email}
-            onChange={onChange}
-            required
-          />
-        </div>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <label htmlFor="name" className="form-label fw-normal">Full Name</label>
+            <input
+              type="text"
+              className="form-control"
+              id="name"
+              name="name"
+              placeholder="Enter your full name"
+              value={credentials.name}
+              onChange={onChange}
+              required
+            />
+          </div>
 
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label">Password</label>
-          <input
-            type="password"
-            className="form-control"
-            id="password"
-            name="password"
-            value={credentials.password}
-            onChange={onChange}
-            required
-          />
-        </div>
+          <div className="mb-3">
+            <label htmlFor="email" className="form-label fw-normal">Email address</label>
+            <input
+              type="email"
+              className="form-control"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+              value={credentials.email}
+              onChange={onChange}
+              required
+            />
+          </div>
 
-        <div className="mb-3">
-          <label htmlFor="address" className="form-label">Address</label>
-          <input
-            type="text"
-            className="form-control"
-            id="address"
-            name="geolocation"
-            value={credentials.geolocation}
-            onChange={onChange}
-            required
-          />
-        </div>
+          <div className="mb-3">
+            <label htmlFor="password" className="form-label fw-normal">Password</label>
+            <input
+              type="password"
+              className="form-control"
+              id="password"
+              name="password"
+              placeholder="Choose a strong password"
+              value={credentials.password}
+              onChange={onChange}
+              required
+            />
+          </div>
 
-        <button type="submit" className="m-3 btn btn-primary">
-          Submit
-        </button>
-        <Link to="/login" className="m-3 btn btn-danger">
-          Already a user
-        </Link>
-      </form>
+          <div className="mb-3">
+            <label htmlFor="address" className="form-label fw-normal">Address</label>
+            <input
+              type="text"
+              className="form-control"
+              id="address"
+              name="geolocation"
+              placeholder="Your delivery address"
+              value={credentials.geolocation}
+              onChange={onChange}
+              required
+            />
+          </div>
+
+          <div className="d-grid gap-2">
+            <button type="submit" className="btn btn-primary">
+              <i className="bi bi-person-check-fill me-2"></i> Sign Up
+            </button>
+            <Link to="/login" className="btn btn-outline-secondary">
+              <i className="bi bi-box-arrow-in-right me-2"></i> Already a user? Login
+            </Link>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

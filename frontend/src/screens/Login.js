@@ -56,7 +56,7 @@ export default function Login() {
         <div className="card p-4 shadow-sm rounded-4 border-0">
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
-              <label htmlFor="email" className="form-label small fw-semibold">Email</label>
+              <label htmlFor="email" className="form-label small fw-normal">Email</label>
               <input
                 type="email"
                 className="form-control rounded-3"
@@ -70,7 +70,7 @@ export default function Login() {
             </div>
 
             <div className="mb-3">
-              <label htmlFor="password" className="form-label small fw-semibold">Password</label>
+              <label htmlFor="password" className="form-label small fw-normal">Password</label>
               <input
                 type="password"
                 className="form-control rounded-3"

@@ -1,24 +1,25 @@
+// src/screens/Login.js
+
 import React, { useState } from "react";
-import { Link , useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 export default function Login() {
-  const [credentials, setcredentials] = useState({
+  const [credentials, setCredentials] = useState({
     email: "",
     password: "",
   });
+  const [toast, setToast] = useState({ show: false, message: "", type: "danger" });
 
-  //navigate to home page after successful login
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-      console.log("Sending credentials:", credentials); // <--- add this
 
     const response = await fetch("http://localhost:5000/api/loginuser", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         email: credentials.email,
         password: credentials.password,
@@ -26,66 +27,93 @@ export default function Login() {
     });
 
     const json = await response.json();
-    console.log(json);
 
     if (!json.success) {
-      alert(json.error || "Enter Valid Credentials");
+      setToast({ show: true, message: json.error || "Invalid Credentials", type: "danger" });
+      return;
     }
-    
-    //navigate to home page after successful login
-    if (json.success) {
-      localStorage.setItem("userEmail", credentials.email); //send the user login email to local storage to be user in order data
-      localStorage.setItem("authToken", json.authToken); // Save the JWT token to localStorage so it can be used for authentication in future requests
-      console.log(localStorage.getItem("authToken"));
-      navigate("/");
-    }
+
+    localStorage.setItem("userEmail", credentials.email);
+    localStorage.setItem("authToken", json.authToken);
+    navigate("/");
   };
 
-  const onChange = (event) => {
-    setcredentials({ ...credentials, [event.target.name]: event.target.value });
+  const onChange = (e) => {
+    setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
   return (
-    <div>
-      <div className="container mt-4">
-        <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label htmlFor="email" className="form-label">
-              Email address
-            </label>
-            <input
-              type="email"
-              className="form-control"
-              id="email"
-              name="email"
-              value={credentials.email}
-              onChange={onChange}
-            />
-          </div>
+    <div className="container-fluid min-vh-100 d-flex flex-column justify-content-center align-items-center bg-light p-4">
+      <div className="w-100" style={{ maxWidth: "400px" }}>
+        {/* Logo or Hero */}
+        <div className="text-center mb-4">
+          <i className="bi bi-bag-heart-fill text-danger" style={{ fontSize: "3rem" }}></i>
+          <h4 className="fw-bold mt-2">Welcome to FoodieHub</h4>
+          <p className="text-muted small">Login to get your food delivered!</p>
+        </div>
 
-          <div className="mb-3">
-            <label htmlFor="password" className="form-label">
-              Password
-            </label>
-            <input
-              type="password"
-              className="form-control"
-              id="password"
-              name="password"
-              value={credentials.password}
-              onChange={onChange}
-            />
-          </div>
+        {/* Login Form */}
+        <div className="card p-4 shadow-sm rounded-4 border-0">
+          <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+              <label htmlFor="email" className="form-label small fw-semibold">Email</label>
+              <input
+                type="email"
+                className="form-control rounded-3"
+                id="email"
+                name="email"
+                placeholder="you@example.com"
+                value={credentials.email}
+                onChange={onChange}
+                required
+              />
+            </div>
 
-          <button type="submit" className="m-3 btn btn-primary">
-            Submit
-          </button>
+            <div className="mb-3">
+              <label htmlFor="password" className="form-label small fw-semibold">Password</label>
+              <input
+                type="password"
+                className="form-control rounded-3"
+                id="password"
+                name="password"
+                placeholder="••••••••"
+                value={credentials.password}
+                onChange={onChange}
+                required
+              />
+            </div>
 
-          <Link to="/createuser" className="m-3 btn btn-danger">
-            I'm a new user
-          </Link>
-        </form>
+            <div className="d-grid gap-2 mt-4">
+              <button type="submit" className="btn btn-danger rounded-3">
+                <i className="bi bi-box-arrow-in-right me-2"></i> Login
+              </button>
+              <Link to="/createuser" className="btn btn-outline-secondary rounded-3">
+                <i className="bi bi-person-plus me-2"></i> I'm a New User
+              </Link>
+            </div>
+          </form>
+        </div>
       </div>
+
+      {/* Toast Notification */}
+      {toast.show && (
+        <div
+          className={`toast show position-fixed bottom-0 end-0 m-3 bg-${toast.type} text-white`}
+          role="alert"
+          aria-live="assertive"
+          aria-atomic="true"
+        >
+          <div className="d-flex">
+            <div className="toast-body">{toast.message}</div>
+            <button
+              type="button"
+              className="btn-close btn-close-white me-2 m-auto"
+              onClick={() => setToast({ ...toast, show: false })}
+              aria-label="Close"
+            ></button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

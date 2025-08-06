@@ -39,7 +39,7 @@ export default function Signup() {
       alert("Enter Valid Credentials");
     } else {
       alert("Account created successfully!");
-      navigate("/login");
+      navigate("/");
     }
   };
 

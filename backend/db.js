@@ -1,8 +1,7 @@
 const mongoose = require("mongoose"); // ✅ Import Mongoose for MongoDB connection
 
 // 🔐 Connection URI to your MongoDB Atlas cluster
-const mongoURI = "mongodb+srv://gofood:mern123@cluster0.cznfsrj.mongodb.net/gofoodmern?retryWrites=true&w=majority";
-
+//const mongoURI = process.env.MONGO_URI
 // const mongoDB = async() => {
 //     try {
 //         // 🌐 Connect to MongoDB Atlas
@@ -36,10 +35,10 @@ const mongoURI = "mongodb+srv://gofood:mern123@cluster0.cznfsrj.mongodb.net/gofo
 // };
 
 
-const mongoDB = async() => {
+const connectMongoDB = async() => {
     try {
         // 🌐 Connect to MongoDB
-        await mongoose.connect(mongoURI, {
+        await mongoose.connect(process.env.MONGO_URI, {
             useNewUrlParser: true,
             useUnifiedTopology: true
         });
@@ -62,7 +61,7 @@ const mongoDB = async() => {
         global.foodCategory = foodCategory;
 
         console.log(`📦 Loaded ${food_items.length} food items and ${foodCategory.length} categories.`);
-        console.log(global.food_items, global.goodCategory)
+        console.log(global.food_items, global.foodCategory)
 
     } catch (err) {
         console.error("❌ MongoDB connection error:", err);
@@ -70,4 +69,4 @@ const mongoDB = async() => {
     }
 };
 
-module.exports = mongoDB;
+module.exports = connectMongoDB;

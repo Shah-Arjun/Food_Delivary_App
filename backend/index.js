@@ -1,12 +1,16 @@
 const express = require("express");
 const mongoDB = require("./db");
 const cors = require("cors");
+const connectMongoDB = require("./db");
+require('dotenv').config();               // Load environment variables from .env
+
+
 
 const app = express();
 const port = 5000;
 
 // Connect to MongoDB
-mongoDB();
+connectMongoDB();
 
 
 app.use((req, res, next) => {

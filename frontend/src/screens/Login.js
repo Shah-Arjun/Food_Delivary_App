@@ -35,7 +35,7 @@ export default function Login() {
 
     localStorage.setItem("userEmail", credentials.email);
     localStorage.setItem("authToken", json.authToken);
-    navigate("/");
+    navigate("/home");
   };
 
   const onChange = (e) => {

@@ -17,7 +17,7 @@ let data = useCart();
     // logout functionality
     const handleLogout = () => {
         localStorage.removeItem("authToken");  //remove authToken from local storage
-        navigate("/login"); // and direct to login page
+        navigate("/"); // and direct to ladfing page
     }
 
 
@@ -67,7 +67,7 @@ let data = useCart();
                                     <Badge pill bg="danger" > {data.length} </Badge>
                                 </div>
 
-{cartView? <Modal onClose={()=>setCartView(false)}> <Cart/> </Modal> : null}
+                                {cartView? <Modal onClose={()=>setCartView(false)}> <Cart/> </Modal> : null}
 
                                 <div className="btn bg-white text-danger mx-2" onClick={handleLogout}>
                                     Logout

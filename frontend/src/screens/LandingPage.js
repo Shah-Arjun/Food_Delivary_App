@@ -71,12 +71,7 @@ export default function LandingPage() {
         <div className="container">
           <h2 className="fw-bold mb-3">Hungry? Let's Get You Fed!</h2>
           <p className="mb-4">Sign in or create an account to start ordering delicious meals today.</p>
-          <Link to="/login" className="btn btn-light btn-lg rounded-pill px-4 me-3">
-            <i className="bi bi-box-arrow-in-right me-2"></i> Login
-          </Link>
-          <Link to="/createuser" className="btn btn-outline-light btn-lg rounded-pill px-4">
-            <i className="bi bi-person-plus me-2"></i> Sign Up
-          </Link>
+         
         </div>
       </section>
 

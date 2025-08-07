@@ -12,7 +12,7 @@ export default function Footer() {
           </Link>
 
           <span className="mb-3 mb-md-0 text-body-secondary">
-            © 2025 GoFood, Inc
+            © 2025 FoodieHub, Inc
           </span>
         </div>
 

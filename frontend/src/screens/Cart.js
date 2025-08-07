@@ -30,7 +30,7 @@ export default function Cart() {
         setLoading(true); // 🟢 Start loading
 
         try {
-            let response = await fetch("http://localhost:5000/api/auth/orderData", {
+            const response = await fetch("http://localhost:5000/api/auth/orderData", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -12,18 +12,27 @@ export default function LandingPage() {
       <section
         className="min-vh-100 d-flex flex-column justify-content-center align-items-center text-center text-white"
         style={{
-          background: "linear-gradient(135deg, #ff7e5f, #feb47b)",
-          padding: "2rem",
+          backgroundImage: "url(https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1350&q=80)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          padding: "3rem",
         }}
       >
-        <div className="container">
-          <i className="bi bi-basket-fill fs-1 mb-3"></i>
+        <div className="bg-dark bg-opacity-50 p-5 rounded">
+           <img
+              src="/logo-removebg-preview.png"
+              alt="FoodieHub"
+              height="300"
+              className="me-2"
+              style={{ objectFit: "contain" }}
+            />
+          {/* <i className="bi bi-basket-fill fs-1 mb-3"></i> */}
           <h1 className="display-4 fw-bold">Welcome to FoodieHub</h1>
           <p className="lead mt-3 mb-4">
             Craving something delicious? Get your favorite meals delivered to your doorstep.
           </p>
           <div className="d-grid gap-3 d-sm-flex justify-content-sm-center">
-            <Link to="/login" className="btn btn-light btn-lg rounded-pill px-4 shadow">
+            <Link to="/login" className="btn btn-warning btn-lg rounded-pill px-4 shadow">
               <i className="bi bi-box-arrow-in-right me-2"></i> Login
             </Link>
             <Link to="/createuser" className="btn btn-outline-light btn-lg rounded-pill px-4">
@@ -71,7 +80,9 @@ export default function LandingPage() {
         <div className="container">
           <h2 className="fw-bold mb-3">Hungry? Let's Get You Fed!</h2>
           <p className="mb-4">Sign in or create an account to start ordering delicious meals today.</p>
-         
+          <Link to="/login" className="btn btn-dark btn-lg rounded-pill px-4 shadow">
+            Get Started
+          </Link>
         </div>
       </section>
 

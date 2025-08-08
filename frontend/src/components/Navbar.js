@@ -3,6 +3,7 @@ import Badge from 'react-bootstrap/Badge';
 import { Link, useNavigate } from "react-router-dom";
 import Modal from "../Modal";
 import Cart from '../screens/Cart';
+import MyOrder from '../screens/MyOrder'
 import { useCart } from "./ContextReducer";
 
 export default function Navbar() {
@@ -53,7 +54,7 @@ export default function Navbar() {
   </li>
   {localStorage.getItem("authToken") && (
     <li className="nav-item mx-3 btn-outline-light rounded-3">
-      <Link className="nav-link fs-5" to="/myOrder">My Orders</Link>
+      <Link className="nav-link fs-5" to="/myorder">My Orders</Link>
     </li>
   )}
 </ul>

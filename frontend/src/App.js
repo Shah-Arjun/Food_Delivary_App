@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Login from "./screens/Login";
 import Signup from "./screens/Signup";
+import MyOrder from "./screens/MyOrder";
+
 
 // linking bootstrap
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -13,7 +15,6 @@ import "../node_modules/bootstrap/dist/js/bootstrap.bundle";
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
 
 import { CartProvider } from "./components/ContextReducer.js";
-import MyOrder from "./screens/MyOrder.js";
 import LandingPage from "./screens/LandingPage.js";
 
 function App() {
@@ -27,7 +28,7 @@ function App() {
             <Route exact path="/home" element={<Home />} />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/createuser" element={<Signup />} />
-            <Route exact path="/myOrder" element={<MyOrder />} />
+      <Route exact path="/myorder" element={<MyOrder />} />
           </Routes>
         </div>
       </Router>

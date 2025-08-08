@@ -121,7 +121,7 @@ export default function Signup() {
             <button type="submit" className="btn btn-primary">
               <i className="bi bi-person-check-fill me-2"></i> Sign Up
             </button>
-            <Link to="/home" className="btn btn-outline-secondary">
+            <Link to="/login" className="btn btn-outline-secondary">
               <i className="bi bi-box-arrow-in-right me-2"></i> Already a user? Login
             </Link>
           </div>

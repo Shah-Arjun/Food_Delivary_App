@@ -1,26 +1,25 @@
-// Importing the Mongoose library for MongoDB interaction
-const mongoose = require('mongoose')
+// // Importing the Mongoose library for MongoDB interaction
+ const mongoose = require('mongoose')
 
 
-//Mongoose provides many features, and one of them is the Schema class, which is used to define the structure of documents in a MongoDB collection.
-const {Schema} = mongoose;
-//or 
-// const Schema = mongoose.Schema;
+// //Mongoose provides many features, and one of them is the Schema class, which is used to define the structure of documents in a MongoDB collection.
+// const {Schema} = mongoose;
+// //or 
 
 
 
-//After this line, you can directly use "Schema" to define a new schema, like:
+// //After this line, you can directly use "Schema" to define a new schema, like:
 
-const OrderSchema = new Schema({
-    email:{
-        type : String,
-        required: true,
-        unique: true
-    },
-    order_data:{
-        type: Array,
-        required:true
-    }
+const OrderSchema = new mongoose.Schema({
+  email: { 
+    type: String,
+    required: true,
+    unique: true
+ },
+  order_data: { 
+    type: Array, 
+    required: true
+ }
 });
 
-module.exports = mongoose.model('order', OrderSchema)
+module.exports = mongoose.model("Order", OrderSchema);

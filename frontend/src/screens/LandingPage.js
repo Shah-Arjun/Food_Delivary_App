@@ -55,10 +55,8 @@ export default function LandingPage() {
         <div className="container text-center">
           <h2 className="fw-bold mb-4 text-dark">Why Choose FoodieHub?</h2>
 
-
           <div className="row g-4">
-
-{/* 1st box */}
+            {/* 1st box */}
             <div className="col-md-4">
               <div className="box fast-delivary p-4 shadow-sm bg-white rounded-4 h-100">
                 <i className="bi bi-truck fs-2 text-danger mb-3"></i>
@@ -69,7 +67,7 @@ export default function LandingPage() {
               </div>
             </div>
 
-{/* 2nd box */}
+            {/* 2nd box */}
             <div className="col-md-4">
               <div className="box top-rated p-4 shadow-sm bg-white rounded-4 h-100">
                 <div class="d-flex justify-content-center">
@@ -97,7 +95,7 @@ export default function LandingPage() {
               </div>
             </div>
 
-{/* 3rd box */}
+            {/* 3rd box */}
             <div className="col-md-4">
               <div className="box easy-use p-4 shadow-sm bg-white rounded-4 h-100">
                 <i className="bi bi-phone fs-2 text-primary mb-3 icon3"></i>
@@ -123,7 +121,7 @@ export default function LandingPage() {
             today.
           </p>
           <Link
-            to="/login"
+            to="/createuser"
             className="btn btn-dark btn-lg border-2 border-white rounded-pill px-4 shadow custom-btn"
           >
             Get Started
@@ -138,4 +136,3 @@ export default function LandingPage() {
     </div>
   );
 }
-

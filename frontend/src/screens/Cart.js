@@ -24,7 +24,7 @@ export default function Cart() {
       });
 
       if (response.status === 200) {
-        alert("✅ Order placed successfully!");
+        alert("✅ Order placed successfully!"); 
         dispatch({ type: "DROP" });
       } else {
         alert("❌ Failed to place order. Please try again.");

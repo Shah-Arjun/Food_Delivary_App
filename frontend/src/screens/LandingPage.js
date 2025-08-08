@@ -51,16 +51,16 @@ export default function LandingPage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-5 bg-light">
+      <section className="feature-section py-5 bg-light">
         <div className="container text-center">
           <h2 className="fw-bold mb-4 text-dark">Why Choose FoodieHub?</h2>
 
 
           <div className="row g-4">
 
-{/* 1st bex */}
-            <div className="box col-md-4">
-              <div className=" fast-delivary p-4 shadow-sm bg-white rounded-4 h-100">
+{/* 1st box */}
+            <div className="col-md-4">
+              <div className="box fast-delivary p-4 shadow-sm bg-white rounded-4 h-100">
                 <i className="bi bi-truck fs-2 text-danger mb-3"></i>
                 <h5 className="fw-bold">Fast Delivery</h5>
                 <p className="text-muted">
@@ -70,8 +70,8 @@ export default function LandingPage() {
             </div>
 
 {/* 2nd box */}
-            <div className="box col-md-4">
-              <div className="top-rated p-4 shadow-sm bg-white rounded-4 h-100">
+            <div className="col-md-4">
+              <div className="box top-rated p-4 shadow-sm bg-white rounded-4 h-100">
                 <div class="d-flex justify-content-center">
                   <div class="content text-center">
                     <div class="ratings">
@@ -98,8 +98,8 @@ export default function LandingPage() {
             </div>
 
 {/* 3rd box */}
-            <div className="box col-md-4">
-              <div className="easy-use p-4 shadow-sm bg-white rounded-4 h-100">
+            <div className=" col-md-4">
+              <div className=" box easy-use p-4 shadow-sm bg-white rounded-4 h-100">
                 <i className="bi bi-phone fs-2 text-primary mb-3"></i>
                 <h5 className="fw-bold">Easy to Use App</h5>
                 <p className="text-muted">

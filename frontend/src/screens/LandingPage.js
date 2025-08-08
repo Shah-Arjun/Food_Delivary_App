@@ -98,8 +98,8 @@ export default function LandingPage() {
             </div>
 
 {/* 3rd box */}
-            <div className=" col-md-4">
-              <div className=" box easy-use p-4 shadow-sm bg-white rounded-4 h-100">
+            <div className="col-md-4">
+              <div className="box easy-use p-4 shadow-sm bg-white rounded-4 h-100">
                 <i className="bi bi-phone fs-2 text-primary mb-3"></i>
                 <h5 className="fw-bold">Easy to Use App</h5>
                 <p className="text-muted">

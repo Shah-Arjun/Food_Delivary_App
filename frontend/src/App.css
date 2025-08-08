@@ -46,10 +46,11 @@
 
 
 /* for landing page card */
+/* General Reset */
 * {
   box-sizing: border-box;
   margin: 0;
-  padding: 1;
+  padding: 0;
 }
 
 body {
@@ -57,25 +58,11 @@ body {
   font-family: 'Ubuntu', sans-serif;
 }
 
-.box {
-  height: 10%;
-  padding: 0 60px 6px 6px;
-  min-height: 198px;
-  text-align: center;
-  border-radius: 14px;
-  background-color: #fff;
-  transition: all 0.4s ease-in-out;
-  box-shadow: 0 0 25px 0 rgba(20, 27, 202, 0.17);
-}
-
-
-.box h4,
-.box:hover p {
-  color: #fff;
-}
-
-.fast-delivary, .top-rated, .easy-use {
-  color: pink;
+/* Feature Boxes */
+.fast-delivary,
+.top-rated,
+.easy-use {
+  color: gray;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -83,41 +70,33 @@ body {
   text-align: center;
   border-radius: 10px;
   padding: 20px;
-  transition: all 0.3s ease-in-out;
-}
-
-
-.fast-delivary:hover {
-  box-shadow: 0 0 25px 0 rgba(20, 27, 201, 0.05);
+  background-color: white; /* default box color */
+  transition: background-color 0.3s ease, transform 0.3s ease;
   cursor: pointer;
-  background-image: linear-gradient(-45deg, #27b88d 0%, #22dd73 100%);
 }
 
-.top-rated:hover {
-  box-shadow: 0 0 25px 0 rgba(20, 27, 201, 0.05);
-  cursor: pointer;
-  background-image: linear-gradient(-45deg, #8d40fb 0%, #5a57fb 100%);
-}
-
+/* Hover Effect */
+.fast-delivary:hover,
+.top-rated:hover,
 .easy-use:hover {
- box-shadow: 0 0 25px 0 rgba(20, 27, 201, 0.05);
-  cursor: pointer;
-  background-image: linear-gradient(-45deg, #fb0054 0%, #f55b2a 100%);
+background-image: linear-gradient(0deg, #e15e32 0%, #60463e 100%);
+  color: white; /* optional: make text white on hover */
+  transform: translateY(-5px); /* subtle lift effect */
 }
 
-
-/* Responsive */
+/* Responsive Spacing */
 @media (max-width: 768px) {
-  .feature-sections, .fast-delivary, .top-rated, .easy-use {
+  .feature-sections,
+  .fast-delivary,
+  .top-rated,
+  .easy-use {
     margin-top: 20px;
   }
 }
- 
 
-
-/* for top ratings box in landing page  */
+/* Top Ratings Styling */
 .product-rating {
-  font-size: 36px;
+  font-size: 32px;
 }
 
 .stars i {

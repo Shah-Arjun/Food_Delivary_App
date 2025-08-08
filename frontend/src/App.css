@@ -107,3 +107,16 @@ background-image: linear-gradient(0deg, #e15e32 0%, #60463e 100%);
 .rating-text {
   margin-top: 0;
 }
+
+
+
+
+
+/* get started button  */
+.custom-btn {
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.custom-btn:hover {
+  transform: translateY(-3px); /* small lift effect */
+}

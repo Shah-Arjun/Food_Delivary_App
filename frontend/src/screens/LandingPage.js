@@ -100,7 +100,7 @@ export default function LandingPage() {
 {/* 3rd box */}
             <div className="col-md-4">
               <div className="box easy-use p-4 shadow-sm bg-white rounded-4 h-100">
-                <i className="bi bi-phone fs-2 text-primary mb-3"></i>
+                <i className="bi bi-phone fs-2 text-primary mb-3 icon3"></i>
                 <h5 className="fw-bold">Easy to Use App</h5>
                 <p className="text-muted">
                   Order food in just a few taps from your phone.
@@ -124,7 +124,7 @@ export default function LandingPage() {
           </p>
           <Link
             to="/login"
-            className="btn btn-dark btn-lg rounded-pill px-4 shadow"
+            className="btn btn-dark btn-lg border-2 border-white rounded-pill px-4 shadow custom-btn"
           >
             Get Started
           </Link>
